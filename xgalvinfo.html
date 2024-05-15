@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<title>xgalvinfo</title>
+</head>
+<body>
+
+<script>
+    function openTourismTable(participants, transport) {
+        var tableNumber;
+        if (participants === 5) {
+            if (transport === "walk") {
+                tableNumber = 1;
+            } else if (transport === "bus") {
+                tableNumber = 2;
+            } else if (transport === "bike") {
+                tableNumber = 3;
+            }
+        } else if (participants === 10) {
+            if (transport === "walk") {
+                tableNumber = 4;
+            } else if (transport === "bus") {
+                tableNumber = 5;
+            } else if (transport === "bike") {
+                tableNumber = 6;
+            }
+        }
+        if (tableNumber) {
+            var link = "Tūristma_tabula_" + tableNumber + ".html";
+            window.open(link, '_self');
+        } else {
+            alert("Nav norādīta tabula šai kombinācijai!");
+        }
+    }
+    
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var participants = parseInt(urlParams.get('participants'));
+    var transport = urlParams.get('transport');
+    
+    openTourismTable(participants, transport);
+</script>
+
+</body>
+</html>
+
